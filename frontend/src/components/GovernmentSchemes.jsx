@@ -6,7 +6,7 @@ const GovernmentSchemes = () => {
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/schemes')
+    axios.get('https://samriddhix-backend.onrender.com/api/schemes')
       .then(r => setSchemes(r.data))
       .catch(() => setSchemes([]));
   }, []);

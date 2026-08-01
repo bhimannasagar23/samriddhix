@@ -31,7 +31,7 @@ const AIVoiceAssistant = ({ weather }) => {
   const getAIAdvice = async (message) => {
     setLoading(true);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/ai/advice', {
+      const { data } = await axios.post('https://samriddhix-backend.onrender.com/api/ai/advice', {
         message, cropType, weather, language: 'Hindi/English'
       });
       setResponse(data.reply);

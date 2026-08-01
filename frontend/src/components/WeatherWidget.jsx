@@ -9,7 +9,7 @@ const WeatherWidget = ({ onWeatherUpdate }) => {
   const fetchWeather = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/weather/${city}`);
+      const { data } = await axios.get(`https://samriddhix-backend.onrender.com/api/weather/${city}`);
       setWeather(data);
       onWeatherUpdate && onWeatherUpdate(data);
     } catch (e) {
