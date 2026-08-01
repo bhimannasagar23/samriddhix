@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "PM-KISAN Samman Nidhi",
+    "nameHindi": "पीएम किसान सम्मान निधि",
+    "amount": "₹6,000/year",
+    "icon": "🌾",
+    "color": "#00D26A",
+    "description": "Direct income support of ₹6000 per year to all landholding farmer families in 3 installments of ₹2000 each.",
+    "eligibility": "All farmers with cultivable land",
+    "crops": ["all"],
+    "link": "https://pmkisan.gov.in",
+    "installments": "3 installments of ₹2000"
+  },
+  {
+    "id": 2,
+    "name": "PM Fasal Bima Yojana",
+    "nameHindi": "प्रधानमंत्री फसल बीमा योजना",
+    "amount": "Up to ₹2 Lakh",
+    "icon": "🛡️",
+    "color": "#F5A623",
+    "description": "Crop insurance against natural calamities, pests and diseases. Premium as low as 1.5% for Rabi crops.",
+    "eligibility": "All farmers growing notified crops",
+    "crops": ["all"],
+    "link": "https://pmfby.gov.in",
+    "installments": "Single claim payout"
+  },
+  {
+    "id": 3,
+    "name": "Kisan Credit Card",
+    "nameHindi": "किसान क्रेडिट कार्ड",
+    "amount": "Up to ₹3 Lakh @ 4%",
+    "icon": "💳",
+    "color": "#3B82F6",
+    "description": "Short-term credit for crop cultivation at subsidized 4% interest rate with additional 3% prompt repayment bonus.",
+    "eligibility": "Farmers, sharecroppers, tenant farmers",
+    "crops": ["all"],
+    "link": "https://agricoop.nic.in",
+    "installments": "Revolving credit"
+  },
+  {
+    "id": 4,
+    "name": "Soil Health Card Scheme",
+    "nameHindi": "मृदा स्वास्थ्य कार्ड योजना",
+    "amount": "FREE",
+    "icon": "🌱",
+    "color": "#8B6914",
+    "description": "Free soil testing every 2 years with crop-wise nutrient recommendations for optimal fertilizer use.",
+    "eligibility": "All farmers",
+    "crops": ["all"],
+    "link": "https://soilhealth.dac.gov.in",
+    "installments": "Every 2 years"
+  },
+  {
+    "id": 5,
+    "name": "PM Krishi Sinchayee Yojana",
+    "nameHindi": "प्रधानमंत्री कृषि सिंचाई योजना",
+    "amount": "55% Subsidy",
+    "icon": "💧",
+    "color": "#00B4D8",
+    "description": "Har Khet Ko Paani — 55% subsidy on drip and sprinkler irrigation systems for water conservation.",
+    "eligibility": "All farmers",
+    "crops": ["all"],
+    "link": "https://pmksy.gov.in",
+    "installments": "One-time subsidy"
+  }
+]

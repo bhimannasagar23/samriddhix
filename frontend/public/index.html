@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>SamriddhiX — Prosperity Through AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --g1:#00D26A;--g2:#0A3D2E;--g3:#F5A623;
+  --dark:#020C06;--card:rgba(10,61,46,0.55);
+  --border:rgba(0,210,106,0.18);--glow:0 0 40px rgba(0,210,106,0.25);
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--dark)}
+canvas#bg{position:fixed;inset:0;z-index:0}
+
+/* ── LANDING ── */
+#landing{
+  position:fixed;inset:0;z-index:10;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.tagline-top{
+  font-family:'Rajdhani',sans-serif;font-weight:300;font-size:clamp(11px,1.4vw,15px);
+  letter-spacing:6px;text-transform:uppercase;color:var(--g1);
+  opacity:0;animation:fadeUp 1s 0.5s forwards;margin-bottom:2rem;
+}
+.logo-wrap{cursor:pointer;pointer-events:all;position:relative}
+.logo-glow{
+  position:absolute;inset:-60px;
+  background:radial-gradient(ellipse,rgba(0,210,106,0.18) 0%,transparent 70%);
+  border-radius:50%;animation:pulse 3s ease-in-out infinite;
+}
+.logo-main{
+  font-family:'Cinzel',serif;font-weight:900;
+  font-size:clamp(64px,11vw,140px);
+  background:linear-gradient(135deg,#00D26A 0%,#E6FFF2 40%,#F5A623 70%,#00D26A 100%);
+  background-size:300% 300%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:gradShift 5s ease infinite,fadeUp 1.2s 0.8s forwards;
+  opacity:0;letter-spacing:-2px;line-height:1;
+  filter:drop-shadow(0 0 60px rgba(0,210,106,0.4));
+  transition:transform 0.3s,filter 0.3s;
+}
+.logo-main:hover{transform:scale(1.04);filter:drop-shadow(0 0 100px rgba(0,210,106,0.7))}
+.logo-x{color:#F5A623;-webkit-text-fill-color:#F5A623}
+.logo-sub{
+  font-family:'Rajdhani',sans-serif;font-weight:600;font-size:clamp(13px,1.6vw,18px);
+  letter-spacing:8px;text-transform:uppercase;
+  color:rgba(230,255,242,0.7);margin-top:1rem;text-align:center;
+  opacity:0;animation:fadeUp 1s 1.4s forwards;
+}
+.sanskrit{
+  font-family:'Rajdhani',sans-serif;font-size:clamp(11px,1.2vw,14px);
+  color:var(--g3);letter-spacing:3px;margin-top:0.5rem;text-align:center;
+  opacity:0;animation:fadeUp 1s 1.8s forwards;
+}
+.click-hint{
+  margin-top:3rem;font-family:'Rajdhani',sans-serif;font-size:13px;
+  letter-spacing:3px;color:rgba(0,210,106,0.6);text-transform:uppercase;
+  animation:blink 2s ease-in-out infinite,fadeUp 1s 2.5s forwards;opacity:0;
+}
+.particles-ring{
+  position:absolute;width:500px;height:500px;
+  border-radius:50%;border:1px solid rgba(0,210,106,0.08);
+  animation:spin 20s linear infinite;pointer-events:none;
+}
+.particles-ring:nth-child(2){width:700px;height:700px;animation-direction:reverse;animation-duration:30s;border-color:rgba(245,166,35,0.06)}
+
+/* ── LOGIN MODAL ── */
+#login-modal{
+  position:fixed;inset:0;z-index:100;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(2,12,6,0.85);backdrop-filter:blur(20px);
+}
+#login-modal.open{display:flex}
+.modal-card{
+  background:rgba(10,61,46,0.7);border:1px solid var(--border);
+  border-radius:24px;padding:3rem 2.5rem;width:min(480px,94vw);
+  box-shadow:var(--glow);backdrop-filter:blur(30px);
+  animation:scaleIn 0.4s ease;
+}
+.modal-title{
+  font-family:'Cinzel',serif;font-size:28px;font-weight:700;
+  background:linear-gradient(135deg,#00D26A,#E6FFF2);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-align:center;margin-bottom:0.3rem;
+}
+.modal-sub{font-family:'Rajdhani',sans-serif;font-size:14px;
+  color:rgba(230,255,242,0.55);text-align:center;letter-spacing:2px;margin-bottom:2rem}
+
+/* language selector */
+.lang-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:1.8rem}
+.lang-btn{
+  padding:6px 14px;border-radius:20px;border:1px solid var(--border);
+  background:transparent;color:rgba(230,255,242,0.7);
+  font-family:'Rajdhani',sans-serif;font-size:13px;cursor:pointer;
+  transition:all 0.2s;
+}
+.lang-btn.active,.lang-btn:hover{background:rgba(0,210,106,0.15);border-color:var(--g1);color:var(--g1)}
+
+/* farmer-friendly big input */
+.field-label{
+  font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:600;
+  color:rgba(230,255,242,0.8);letter-spacing:1px;margin-bottom:8px;display:block;
+}
+.field-label .icon{font-size:20px;margin-right:6px}
+.big-input{
+  width:100%;padding:16px 18px;border-radius:14px;border:1px solid var(--border);
+  background:rgba(0,0,0,0.3);color:#E6FFF2;font-family:'Rajdhani',sans-serif;
+  font-size:18px;font-weight:600;letter-spacing:1px;outline:none;
+  transition:border-color 0.2s,box-shadow 0.2s;margin-bottom:1.2rem;
+}
+.big-input:focus{border-color:var(--g1);box-shadow:0 0 20px rgba(0,210,106,0.15)}
+.big-input::placeholder{color:rgba(230,255,242,0.3)}
+.btn-login{
+  width:100%;padding:18px;border-radius:50px;border:none;
+  background:linear-gradient(135deg,#1B8A5A,#00D26A);
+  color:#020C06;font-family:'Cinzel',serif;font-size:18px;font-weight:700;
+  cursor:pointer;letter-spacing:2px;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 6px 30px rgba(0,210,106,0.4);
+}
+.btn-login:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,210,106,0.6)}
+.voice-hint{
+  text-align:center;font-family:'Rajdhani',sans-serif;font-size:13px;
+  color:rgba(230,255,242,0.4);margin-top:1rem;letter-spacing:1px;
+}
+.close-modal{
+  position:absolute;top:20px;right:24px;
+  background:transparent;border:none;color:rgba(230,255,242,0.4);
+  font-size:24px;cursor:pointer;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.88)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:0.7}}
+@keyframes blink{0%,100%{opacity:0.6}50%{opacity:0.2}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- LANDING -->
+<div id="landing">
+  <div class="particles-ring"></div>
+  <div class="particles-ring"></div>
+  <div class="tagline-top">Intelligent Decision-Support System for Smart Agriculture</div>
+  <div class="logo-wrap" id="logoBtn">
+    <div class="logo-glow"></div>
+    <div class="logo-main">Samriddhi<span class="logo-x">X</span></div>
+  </div>
+  <div class="logo-sub">Har Kisan ka Digital Saathi</div>
+  <div class="sanskrit">समृद्धि — Prosperity Through AI</div>
+  <div class="click-hint">↑ Tap to Enter ↑</div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="login-modal">
+  <div class="modal-card" style="position:relative">
+    <button class="close-modal" onclick="closeLogin()">✕</button>
+    <div class="modal-title">SamriddhiX</div>
+    <div class="modal-sub">APNI BHASHA CHUNEIN · अपनी भाषा चुनें</div>
+
+    <div class="lang-row" id="langRow">
+      <button class="lang-btn active" onclick="setLang(this,'hi')" data-lang="hi">हिंदी</button>
+      <button class="lang-btn" onclick="setLang(this,'en')" data-lang="en">English</button>
+      <button class="lang-btn" onclick="setLang(this,'kn')" data-lang="kn">ಕನ್ನಡ</button>
+      <button class="lang-btn" onclick="setLang(this,'te')" data-lang="te">తెలుగు</button>
+      <button class="lang-btn" onclick="setLang(this,'ta')" data-lang="ta">தமிழ்</button>
+      <button class="lang-btn" onclick="setLang(this,'mr')" data-lang="mr">मराठी</button>
+      <button class="lang-btn" onclick="setLang(this,'pa')" data-lang="pa">ਪੰਜਾਬੀ</button>
+    </div>
+
+    <label class="field-label" id="lblPhone"><span class="icon">📱</span><span id="txtPhone">मोबाइल नंबर</span></label>
+    <input class="big-input" type="tel" id="phoneInput" placeholder="9876543210" maxlength="10"/>
+
+    <label class="field-label"><span class="icon">🏡</span><span id="txtVillage">आपका गाँव / जिला</span></label>
+    <input class="big-input" type="text" id="villageInput" placeholder="जैसे: कोल्हापुर, महाराष्ट्र"/>
+
+    <button class="btn-login" id="loginBtn" onclick="doLogin()">
+      <span id="loginBtnTxt">🌾 प्रवेश करें</span>
+    </button>
+    <div class="voice-hint" id="voiceHint">🎤 बोलकर भी लॉगिन कर सकते हैं</div>
+  </div>
+</div>
+
+<script>
+/* ─── PARTICLE / 3D CANVAS BG ─── */
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+
+class Particle{
+  constructor(){this.reset()}
+  reset(){
+    this.x=Math.random()*W;this.y=Math.random()*H;
+    this.size=Math.random()*2+0.4;
+    this.speedX=(Math.random()-0.5)*0.4;this.speedY=(Math.random()-0.5)*0.4;
+    this.opacity=Math.random()*0.6+0.1;
+    this.color=Math.random()>0.7?'rgba(245,166,35,':'rgba(0,210,106,';
+  }
+  update(){
+    this.x+=this.speedX;this.y+=this.speedY;
+    if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();
+  }
+  draw(){
+    ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle=this.color+this.opacity+')';ctx.fill();
+  }
+}
+for(let i=0;i<180;i++)particles.push(new Particle());
+
+// mouse parallax
+let mx=W/2,my=H/2;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+
+function drawConnections(){
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<100){
+        ctx.strokeStyle=`rgba(0,210,106,${0.07*(1-d/100)})`;
+        ctx.lineWidth=0.5;ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();
+      }
+    }
+  }
+}
+
+// 3D rotating wireframe sphere
+let angle=0;
+function drawSphere(){
+  const cx=W/2,cy=H/2,r=Math.min(W,H)*0.38;
+  const lats=10,lons=10;
+  ctx.save();ctx.strokeStyle='rgba(0,210,106,0.06)';ctx.lineWidth=0.7;
+  for(let i=0;i<=lats;i++){
+    const lat=(i/lats)*Math.PI;
+    ctx.beginPath();
+    for(let j=0;j<=lons*2;j++){
+      const lon=(j/lons)*Math.PI+angle;
+      const x=cx+r*Math.sin(lat)*Math.cos(lon);
+      const y=cy+r*Math.cos(lat);
+      const z=r*Math.sin(lat)*Math.sin(lon);
+      const scale=0.6+0.4*(z/r+1)/2;
+      j===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  }
+  for(let j=0;j<=lons;j++){
+    const lon=(j/lons)*Math.PI+angle;
+    ctx.beginPath();
+    for(let i=0;i<=lats*2;i++){
+      const lat=(i/lats)*Math.PI;
+      const x=cx+r*Math.sin(lat)*Math.cos(lon);
+      const y=cy+r*Math.cos(lat);
+      j===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function animate(){
+  ctx.clearRect(0,0,W,H);
+  // radial gradient bg
+  const grad=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*0.7);
+  grad.addColorStop(0,'rgba(10,61,46,0.15)');grad.addColorStop(1,'rgba(2,12,6,0)');
+  ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);
+  angle+=0.002;
+  drawSphere();
+  particles.forEach(p=>{p.update();p.draw()});
+  drawConnections();
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* ─── MODAL LOGIC ─── */
+document.getElementById('logoBtn').onclick=()=>{
+  document.getElementById('login-modal').classList.add('open');
+};
+function closeLogin(){document.getElementById('login-modal').classList.remove('open')}
+
+const LABELS={
+  hi:{phone:'मोबाइल नंबर',village:'आपका गाँव / जिला',btn:'🌾 प्रवेश करें',voice:'🎤 बोलकर भी लॉगिन कर सकते हैं'},
+  en:{phone:'Mobile Number',village:'Your Village / District',btn:'🌾 Enter Dashboard',voice:'🎤 You can also login by voice'},
+  kn:{phone:'ಮೊಬೈಲ್ ಸಂಖ್ಯೆ',village:'ನಿಮ್ಮ ಗ್ರಾಮ / ಜಿಲ್ಲೆ',btn:'🌾 ಪ್ರವೇಶಿಸಿ',voice:'🎤 ಧ್ವನಿಯಿಂದಲೂ ಲಾಗಿನ್ ಮಾಡಬಹುದು'},
+  te:{phone:'మొబైల్ నంబర్',village:'మీ గ్రామం / జిల్లా',btn:'🌾 ప్రవేశించండి',voice:'🎤 మీరు వాయిస్ ద్వారా కూడా లాగిన్ చేయవచ్చు'},
+  ta:{phone:'மொபைல் எண்',village:'உங்கள் கிராமம் / மாவட்டம்',btn:'🌾 உள்நுழைக',voice:'🎤 குரலில் உள்நுழையலாம்'},
+  mr:{phone:'मोबाइल नंबर',village:'तुमचे गाव / जिल्हा',btn:'🌾 प्रवेश करा',voice:'🎤 आवाजाने लॉगिन करा'},
+  pa:{phone:'ਮੋਬਾਈਲ ਨੰਬਰ',village:'ਤੁਹਾਡਾ ਪਿੰਡ / ਜ਼ਿਲ੍ਹਾ',btn:'🌾 ਦਾਖਲ ਹੋਵੋ',voice:'🎤 ਆਵਾਜ਼ ਨਾਲ ਵੀ ਲਾਗਇਨ ਕਰ ਸਕਦੇ ਹੋ'},
+};
+let currentLang='hi';
+function setLang(el,lang){
+  currentLang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  const L=LABELS[lang];
+  document.getElementById('txtPhone').textContent=L.phone;
+  document.getElementById('txtVillage').textContent=L.village;
+  document.getElementById('loginBtnTxt').textContent=L.btn;
+  document.getElementById('voiceHint').textContent=L.voice;
+}
+
+function doLogin(){
+  const phone=document.getElementById('phoneInput').value;
+  if(!phone||phone.length<10){
+    document.getElementById('phoneInput').style.borderColor='#E24B4A';
+    setTimeout(()=>document.getElementById('phoneInput').style.borderColor='',1500);return;
+  }
+  const loc=document.getElementById('villageInput').value||'India';
+  localStorage.setItem('sx_phone',phone);
+  localStorage.setItem('sx_location',loc);
+  localStorage.setItem('sx_lang',currentLang);
+  document.getElementById('loginBtn').textContent='✅ Entering…';
+  setTimeout(()=>{window.location.href='dashboard.html'},800);
+}
+document.getElementById('phoneInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+</script>
+</body>
+</html>
