@@ -1,155 +1,409 @@
-# 🌾 SamriddhiX — Intelligent Farm Decision Support System
-### *Har Kisan ka Digital Saathi | समृद्धि — Prosperity Through AI*
+# 🌾 SamriddhiX — Prosperity Through AI
 
-> Hackathon project: Intelligent system for smart agriculture, resource optimization & environmental sustainability
+<p align="center">
+  <img src="https://img.shields.io/badge/Hackathon-Project-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/AI-Powered-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Node.js-Express-black?style=for-the-badge&logo=node.js" />
+  <img src="https://img.shields.io/badge/React-Vite-61DAFB?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Python-FastAPI-3776AB?style=for-the-badge&logo=python" />
+  <img src="https://img.shields.io/badge/Render-Deployed-46E3B7?style=for-the-badge" />
+</p>
 
----
-
-## 🚀 Run in 3 Commands (Zero Config Needed)
-
-```bash
-# Step 1: Clone / open in VS Code
-cd samriddhix
-
-# Step 2: Install backend dependencies
-cd backend && npm install
-
-# Step 3: Start the server (serves EVERYTHING)
-node server.js
-```
-
-Then open: **http://localhost:5000**
-
-> ✅ Weather works without any API key (uses Open-Meteo — free, no signup)
-> ✅ AI chat works if you add Gemini key (falls back to local AI if not set)
+<p align="center">
+  <h3 align="center">🌱 Intelligent Decision Support System for Smart Agriculture</h3>
+</p>
 
 ---
 
-## 📁 Project Structure
+# 📖 Overview
+
+**SamriddhiX** is an AI-powered Smart Agriculture platform designed to empower farmers through intelligent decision-making.
+
+The platform combines Artificial Intelligence, Machine Learning, Weather Intelligence, Government Schemes, Crop Disease Detection, Voice Assistance, and Farm Analytics into a single ecosystem.
+
+Its objective is to make modern agricultural technology simple, accessible, and multilingual for every farmer.
+
+---
+
+# 🎯 Problem Statement
+
+Farmers often struggle with
+
+- Lack of accurate weather information
+- Crop diseases
+- Limited awareness of government schemes
+- Low access to agricultural experts
+- Language barriers
+- Delayed decision making
+
+SamriddhiX solves these problems using AI-powered solutions.
+
+---
+
+# ✨ Features
+
+## 🤖 AI Voice Assistant
+
+- Natural language interaction
+- Multilingual support
+- Farmer-friendly interface
+
+---
+
+## 🌦 Smart Weather Intelligence
+
+- Real-time weather updates
+- Farming recommendations
+- Climate-based alerts
+
+---
+
+## 🌱 Crop Disease Detection
+
+- AI-powered crop diagnosis
+- Image-based detection
+- Disease prevention suggestions
+
+---
+
+## 📊 Farm Analytics Dashboard
+
+- Smart visualization
+- Farm insights
+- Performance monitoring
+
+---
+
+## 🏛 Government Schemes Assistant
+
+- Discover schemes
+- Eligibility guidance
+- Easy-to-understand information
+
+---
+
+## 💬 AI Subsidy Chatbot
+
+- Farmer support
+- Government subsidy assistance
+- Instant responses
+
+---
+
+## 🌍 Multi-language Support
+
+Supports regional languages for improved accessibility.
+
+---
+
+## 🚀 Responsive Modern UI
+
+Designed with
+
+- React
+- Vite
+- Modern animations
+- Mobile-friendly layout
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React
+- Vite
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+## Backend
+
+- Node.js
+- Express.js
+- REST APIs
+- dotenv
+- CORS
+
+---
+
+## AI / ML
+
+- Python
+- FastAPI
+- Machine Learning
+
+---
+
+## Deployment
+
+- Render
+
+---
+
+# 📂 Project Structure
 
 ```
 samriddhix/
+│
 ├── frontend/
-│   └── public/
-│       ├── index.html          ← 3D Landing page (SamriddhiX entry)
-│       └── dashboard.html      ← Full dashboard (all features)
+│   ├── src/
+│   ├── public/
+│   └── components/
+│
 ├── backend/
-│   ├── server.js               ← Express server (serves frontend + API)
-│   ├── data/
-│   │   └── govt_schemes.json   ← All 5 government schemes data
-│   ├── package.json
-│   └── .env.example            ← Copy to .env and add keys
+│   ├── server.js
+│   ├── routes/
+│   └── package.json
+│
+├── ml-service/
+│   ├── main.py
+│   └── requirements.txt
+│
 └── README.md
 ```
 
 ---
 
-## ✨ Features
+# ⚡ Live Backend
 
-| Feature | Status | Description |
-|---------|--------|-------------|
-| 🎬 3D Landing Page | ✅ | Animated wireframe sphere + particles. Click SamriddhiX to login |
-| 🌍 Multi-language Login | ✅ | Hindi, English, Kannada, Telugu, Tamil, Marathi, Punjabi |
-| 🌤️ Real-time Weather | ✅ | Open-Meteo API (no key needed). 7-day forecast + farm alerts |
-| 🤖 AI Chat Assistant | ✅ | Detects language. Gemini API + local fallback. Voice input |
-| 🎤 Voice Input | ✅ | Web Speech API — speak in Hindi/English/regional languages |
-| 🌾 Crop Planner | ✅ | Season-wise crops + pesticide doses with exact quantities |
-| 💧 Smart Irrigation | ✅ | Zone-wise moisture monitoring + AI water advice |
-| 💰 Mandi Prices | ✅ | Live-simulated market prices, best time to sell |
-| 📋 Debt Tracker | ✅ | Voice-based debt entry, repayment advice |
-| 🏛️ Govt Schemes | ✅ | PM-KISAN, Fasal Bima, KCC, Soil Health, PMKSY |
-| 📊 Analytics | ✅ | 8+ charts: Climate change, rainfall, yield, income, seasonal |
-| 🌿 3D Farm | ✅ | Three.js interactive 3D farm — drag, zoom, wind sway |
-| 📱 Hover Zoom Tiles | ✅ | Dashboard tiles zoom on hover (scale 1.04) |
-| 🔔 Smart Alerts | ✅ | Rain/heat alerts with farm-specific action advice |
+### 🌍 Render Deployment
+
+https://samriddhix-backend.onrender.com
 
 ---
 
-## 🎯 Hackathon Demo Flow (6 min pitch)
+# 🚀 Getting Started
 
-1. **Landing** → Show 3D sphere + glowing SamriddhiX. Click → Login modal
-2. **Login** → Select Hindi. Enter phone + village. Enter dashboard
-3. **Dashboard** → Show 6 hovering tiles, weather alert strip
-4. **AI Chat** → Opens auto. Say: "मेरी फसल में कीड़े लग गए" (voice)
-5. **Weather** → 7-day forecast cards + climate change chart
-6. **Crop Planner** → Show pesticide guide with exact doses
-7. **Smart Irrigation** → Toggle zones, moisture bars
-8. **Sell Crop** → Mandi price table + AI advice
-9. **Govt Schemes** → PM-KISAN, Fasal Bima cards
-10. **3D Farm** → Drag around the animated farm
+## Clone Repository
 
----
-
-## 🔑 Optional API Keys (App works without them)
-
-| API | Purpose | Get Free Key |
-|-----|---------|-------------|
-| Gemini AI | Better AI chat responses | [aistudio.google.com](https://aistudio.google.com) |
-| Open-Meteo | Weather (already works!) | No key needed ✅ |
-
-### Add Gemini key:
 ```bash
-cp backend/.env.example backend/.env
-# Edit backend/.env → paste GEMINI_API_KEY=your_key
+git clone https://github.com/bhimannasagar23/samriddhix.git
+```
+
+```
+cd samriddhix
 ```
 
 ---
 
-## 🌐 Deploy to Internet (optional, 10 min)
+## Backend Setup
 
-### Vercel (frontend only)
-```bash
-npx vercel --prod frontend/public
+```
+cd backend
 ```
 
-### Railway (full app)
-1. Push to GitHub
-2. Go to [railway.app](https://railway.app) → New Project → Deploy from GitHub
-3. Set: `Start command: cd backend && node server.js`
-4. Add env variables from `.env`
-5. Done! Get your URL.
+Install dependencies
+
+```bash
+npm install
+```
+
+Run
+
+```bash
+npm start
+```
 
 ---
 
-## 🏗️ Tech Stack
+## Frontend Setup
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | Pure HTML5 + CSS3 + Vanilla JS |
-| 3D Graphics | Three.js (wireframe sphere + farm) |
-| Charts | Chart.js 4.x (8 chart types) |
-| AI Chat | Anthropic Claude API + local fallback |
-| Voice | Web Speech API (browser native) |
-| Weather | Open-Meteo API (free, no key) |
-| Backend | Node.js + Express |
-| Fonts | Cinzel (headings) + Rajdhani (body) |
-| Animation | CSS keyframes + Three.js |
+```
+cd frontend
+```
 
----
+Install dependencies
 
-## 🎨 Color Palette
+```bash
+npm install
+```
 
-| Name | Hex | Usage |
-|------|-----|-------|
-| Forest Night | `#0A3D2E` | Primary dark bg |
-| Samriddhi Green | `#00D26A` | Accent, CTAs, borders |
-| Harvest Gold | `#F5A623` | Warnings, highlights |
-| Deep Space | `#1A1A2E` | Card backgrounds |
-| Dew White | `#E6FFF2` | Primary text |
+Run
+
+```bash
+npm run dev
+```
 
 ---
 
-## 👥 Problem Statement
-*"Create an intelligent decision-support system using AI and real-time data for smart agriculture, resource optimization, or environmental sustainability applications"*
+## ML Service
 
-**SamriddhiX addresses:**
-- ✅ AI decision support (crop planning, disease detection, market timing)
-- ✅ Real-time data (live weather, live mandi prices)
-- ✅ Smart agriculture (irrigation automation, crop recommendations)
-- ✅ Resource optimization (water management, pesticide dosing)
-- ✅ Environmental sustainability (climate change analytics, water conservation)
-- ✅ Social impact (language inclusion, government scheme access, debt management)
+```
+cd ml-service
+```
+
+Install
+
+```bash
+pip install -r requirements.txt
+```
+
+Run
+
+```bash
+python main.py
+```
 
 ---
 
-*Built with ❤️ for India's 140 million farmers*
+# 🌐 API
+
+Base URL
+
+```
+https://samriddhix-backend.onrender.com
+```
+
+---
+
+# 💡 Future Enhancements
+
+- AI Yield Prediction
+- Soil Health Analysis
+- Drone Monitoring
+- Satellite Crop Analysis
+- IoT Sensor Integration
+- Market Price Prediction
+- AI Fertilizer Recommendation
+- Pest Prediction
+- Offline Mode
+- Mobile Application
+
+---
+
+# 📸 Screenshots
+
+> Add screenshots here
+
+```
+images/
+    landing-page.png
+    dashboard.png
+    weather.png
+    disease-detection.png
+```
+
+---
+
+# 🎥 Demo
+
+Demo Video
+
+```
+Coming Soon
+```
+
+---
+
+# 📊 Architecture
+
+```
+                   Farmer
+                      │
+                      ▼
+          React + Vite Frontend
+                      │
+          REST API Requests
+                      │
+                      ▼
+            Node.js + Express
+                      │
+        ┌─────────────┼──────────────┐
+        │             │              │
+        ▼             ▼              ▼
+ Weather API     AI Models     Government Data
+                      │
+                      ▼
+             Python ML Service
+```
+
+---
+
+# 🏆 Project Highlights
+
+✅ AI Powered
+
+✅ Smart Agriculture
+
+✅ Modern UI
+
+✅ REST APIs
+
+✅ Responsive Design
+
+✅ Scalable Architecture
+
+✅ Hackathon Ready
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+
+2. Create a new branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit
+
+```bash
+git commit -m "Added new feature"
+```
+
+4. Push
+
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request
+
+---
+
+# 👨‍💻 Developer
+
+**Bhimanna Sagar**
+
+GitHub
+
+https://github.com/bhimannasagar23
+
+Project Repository
+
+https://github.com/bhimannasagar23/samriddhix
+
+---
+
+# ⭐ Support
+
+If you found this project useful,
+
+⭐ Star this repository.
+
+It motivates future development.
+
+---
+
+# 📜 License
+
+This project is developed for educational, research, and hackathon purposes.
+
+---
+
+<p align="center">
+
+## 🌾 *"Empowering Every Farmer Through Artificial Intelligence."*
+
+**SamriddhiX — Prosperity Through AI**
+
+Made with ❤️ by **Bhimanna Sagar**
+
+</p>
